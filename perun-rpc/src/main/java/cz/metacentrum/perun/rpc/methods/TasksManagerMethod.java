@@ -15,12 +15,11 @@ import cz.metacentrum.perun.rpc.deserializer.Deserializer;
 import cz.metacentrum.perun.taskslib.model.Task;
 import cz.metacentrum.perun.taskslib.model.TaskResult;
 
-public enum PropagationStatsReaderMethod implements ManagerMethod {
+public enum TasksManagerMethod implements ManagerMethod {
 
 	/*#
 	 * Returns a task.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @param service int Service <code>id</code>
 	 * @param facility int Facility <code>id</code>
 	 * @return Task Found task
@@ -36,7 +35,6 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 	/*#
 	 * Returns all tasks.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @return List<Task> All tasks
 	 */
 	listAllTasks {
@@ -48,7 +46,6 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 	/*#
 	 * Returns all tasks associated with selected facility.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @param facility int Facility <code>id</code>
 	 * @return List<Tasks> Tasks
 	 */
@@ -57,6 +54,7 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 			return ac.getTasksManager().listAllTasksForFacility(ac.getSession(), parms.readInt("facility"));
 		}
 	},
+
 	/*#
 	 *	NOT IMPLEMENTED YET
 	 */
@@ -92,10 +90,10 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 			throw new InternalErrorException("Not implemented yet!");
 		}
 	},
+
 	/*#
 	 * Whether task exists.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @param service int Service <code>id</code>
 	 * @param facility int Facility <code>id</code>
 	 * @return int 1 = true; 0 = false
@@ -111,7 +109,6 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 	/*#
 	 * Returns the count of all tasks.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @return int Task count
 	 */
 	countTasks {
@@ -123,7 +120,6 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 	/*#
 	 * Returns all task results.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @return List<TaskResult> Task results.
 	 */
 	getTaskResults {
@@ -135,7 +131,6 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 	/*#
 	 * Return list of TaskResults by a Task.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @param task int Task <code>id</code>
 	 * @return List<TaskResult> Results
 	 */
@@ -148,7 +143,6 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 	/*#
 	 * Return list of only newest TaskResults by a Task for GUI.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @param task int Task
 	 * @return List<TaskResult> Results
 	 */
@@ -161,7 +155,6 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 	/*#
 	 * Return list of TaskResults by a Task and destination for GUI.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @param task int Task
 	 * @return List<TaskResult> Results
 	 */
@@ -174,7 +167,6 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 	/*#
 	 * Return list of TaskResults by a Task for GUI.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @param task int Task
 	 * @return List<TaskResult> Results
 	 */
@@ -187,7 +179,6 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 	/*#
 	 * Returns TaskResult by its <code>id</code>.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @param taskResult int TaskResult <code>id</code>
 	 * @return TaskResult Result
 	 */
@@ -200,7 +191,6 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 	/*#
 	 * Returns Task by its <code>id</code>.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @param id int Task <code>id</code>
 	 * @return Task Task
 	 */
@@ -214,7 +204,6 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 	/*#
 	 * Return propagation status of facility.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @param facility int Facility <code>id</code>
 	 * @return FacilityState Facility state
 	 */
@@ -227,13 +216,11 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 	/*#
 	 * Return propagation status of all facilities in Perun.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @return List<FacilityState> Propagation status
 	 */
 	/*#
 	 * Return propagation status of all facilities related to VO resources.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @param vo int VO <code>id</code>
 	 * @return List<FacilityState> Propagation status
 	 */
@@ -250,7 +237,6 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 	/*#
 	 * Return propagation status of all resources related to VO.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @param voId int VO <code>id</code>
 	 * @return List<ResourceState> Propagation status
 	 */
@@ -263,7 +249,6 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 	/*#
 	 * Returns task results for defined destinations.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @param destinations List<String> Destinations
 	 * @return List<TaskResult> Results.
 	 */
@@ -276,7 +261,6 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 	/*#
 	 * Returns service states for defined facility.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @param Facility int <code>id</code> of facility
 	 * @return List<ServiceState> serviceStates.
 	 */
@@ -289,7 +273,6 @@ public enum PropagationStatsReaderMethod implements ManagerMethod {
 	/*#
 	 * Delete Task and TaskResults.
 	 *
-	 * @deprecated Method was moved to TasksManager
 	 * @param task Task Task to delete.
 	 */
 	deleteTask {

@@ -43,7 +43,13 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 
 	<bean id="taskStore" class="cz.metacentrum.perun.taskslib.service.impl.TaskStoreImpl"/>
 
-	<bean id="taskManager" class="cz.metacentrum.perun.taskslib.service.impl.TaskManagerImpl"/>
+	<bean id="tasksManagerBl" class="cz.metacentrum.perun.core.blImpl.TasksManagerBlImpl">
+		<constructor-arg ref="tasksManagerImpl"/>
+		<property name="perunBl" ref="perun"/>
+	</bean>
+	<bean id="tasksManagerImpl" class="cz.metacentrum.perun.core.impl.TasksManagerImpl">
+		<constructor-arg ref="dataSource"/>
+	</bean>
 
 	<!-- Task Queues -->
 	<bean id="waitingTasksQueue" class="java.util.concurrent.DelayQueue"/>

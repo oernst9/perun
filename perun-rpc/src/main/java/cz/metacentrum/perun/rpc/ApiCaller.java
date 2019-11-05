@@ -12,12 +12,12 @@ import cz.metacentrum.perun.cabinet.model.Publication;
 import cz.metacentrum.perun.cabinet.model.PublicationSystem;
 import cz.metacentrum.perun.cabinet.model.Thanks;
 import cz.metacentrum.perun.core.api.PerunClient;
+import cz.metacentrum.perun.core.api.TasksManager;
 import cz.metacentrum.perun.registrar.model.Application;
 import cz.metacentrum.perun.voot.VOOT;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import cz.metacentrum.perun.controller.service.GeneralServiceManager;
-import cz.metacentrum.perun.controller.service.PropagationStatsReader;
 import cz.metacentrum.perun.core.api.Attribute;
 import cz.metacentrum.perun.core.api.AttributeDefinition;
 import cz.metacentrum.perun.core.api.AttributesManager;
@@ -90,7 +90,7 @@ public class ApiCaller {
 	private GeneralServiceManager generalServiceManager;
 	private RTMessagesManager rtMessagesManager = null;
 	private SecurityTeamsManager securityTeamsManager = null;
-	private PropagationStatsReader propagationStatsReader;
+	private TasksManager tasksManager;
 	private Searcher searcher = null;
 	private CabinetManager cabinetManager;
 	private RegistrarManager registrarManager;
@@ -212,8 +212,8 @@ public class ApiCaller {
 		return generalServiceManager;
 	}
 
-	public PropagationStatsReader getPropagationStatsReader() {
-		return propagationStatsReader;
+	public TasksManager getTasksManager() {
+		return tasksManager;
 	}
 
 	public CabinetManager getCabinetManager() {
@@ -436,8 +436,8 @@ public class ApiCaller {
 		// Initialize serviceManager
 		this.generalServiceManager = WebApplicationContextUtils.getWebApplicationContext(context).getBean("generalServiceManager", GeneralServiceManager.class);
 
-		// Initialize PropagationStatsReader
-		this.propagationStatsReader = WebApplicationContextUtils.getWebApplicationContext(context).getBean("propagationStatsReader", PropagationStatsReader.class);
+		// Initialize TasksManager
+		this.tasksManager = WebApplicationContextUtils.getWebApplicationContext(context).getBean("tasksManager", TasksManager.class);
 
 		// Initialize CabinetManager
 		this.cabinetManager = WebApplicationContextUtils.getWebApplicationContext(context).getBean("cabinetManager", CabinetManager.class);

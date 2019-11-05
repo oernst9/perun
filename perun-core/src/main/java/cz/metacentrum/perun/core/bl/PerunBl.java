@@ -223,4 +223,10 @@ public interface PerunBl extends Perun {
 	 * @return  ModulesUtilsBl
 	 */
 	ModulesUtilsBl getModulesUtilsBl();
+
+	/**
+	 * Gets a TasksManagerBl
+	 * @return TasksManagerBl
+	 */
+	TasksManagerBl getTasksManagerBl();
 }
